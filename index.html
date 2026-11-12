@@ -1,0 +1,522 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ANANSI - El Templo de los Tres Caminos</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+        <div class="logo">ANANSI</div>
+        <div class="subtitulo">EL TEMPLO DE LOS TRES CAMINOS</div>
+    </header>
+
+    <main>
+
+        <!-- PANTALLA DE INICIO -->
+
+        <section id="inicio" class="pantalla activa">
+
+            <div class="contenido-inicio">
+
+                <p class="etiqueta">UNA AVENTURA DE DECISIONES</p>
+
+                <h1>ANANSI</h1>
+
+                <h2>El templo de los tres caminos</h2>
+
+                <p class="descripcion-inicio">
+                    Bajo las ruinas de una antigua civilización
+                    se esconde un templo que jamás debió ser encontrado.
+
+                    Tres viajeros entraron buscando respuestas.
+                    Ninguno sabe qué tendrá que sacrificar para salir.
+                </p>
+
+                <input
+                    type="text"
+                    id="nombreJugador"
+                    placeholder="Escribí tu nombre"
+                    maxlength="20"
+                >
+
+                <button id="comenzar" class="boton-principal">
+                    COMENZAR AVENTURA
+                </button>
+
+                <button id="continuar" class="boton-secundario" hidden>
+                    CONTINUAR PARTIDA
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRESENTACION DE PERSONAJES -->
+
+        <section id="personajes" class="pantalla">
+
+            <h2>LOS TRES VIAJEROS</h2>
+
+            <p class="texto-intro">
+                Cada uno posee habilidades diferentes.
+                Elegir correctamente quién atraviesa cada puerta
+                puede cambiar el destino de todos.
+            </p>
+
+            <div class="personajes-container">
+
+                <article class="personaje felix">
+
+                    <div class="simbolo">✂</div>
+
+                    <h3>FÉLIX</h3>
+
+                    <p class="elemento">LA TIJERA</p>
+
+                    <p>
+                        Creativo y carismático.
+                        Encuentra soluciones donde otros
+                        solamente ven problemas.
+                    </p>
+
+                    <span>Creatividad y persuasión</span>
+
+                </article>
+
+
+                <article class="personaje berto">
+
+                    <div class="simbolo">▤</div>
+
+                    <h3>BERTO</h3>
+
+                    <p class="elemento">EL PAPEL</p>
+
+                    <p>
+                        Inteligente y razonable.
+                        Analiza los detalles y encuentra
+                        respuestas mediante la lógica.
+                    </p>
+
+                    <span>Inteligencia y análisis</span>
+
+                </article>
+
+
+                <article class="personaje roco">
+
+                    <div class="simbolo">◆</div>
+
+                    <h3>ROCO</h3>
+
+                    <p class="elemento">LA PIEDRA</p>
+
+                    <p>
+                        Fortachón y corpulento.
+                        Su fuerza le permite superar
+                        obstáculos que parecen imposibles.
+                    </p>
+
+                    <span>Fuerza y resistencia</span>
+
+                </article>
+
+            </div>
+
+            <button id="entrarTemplo" class="boton-principal">
+                ENTRAR AL TEMPLO
+            </button>
+
+        </section>
+
+
+        <!-- PANTALLA DEL JUEGO -->
+
+        <section id="juego" class="pantalla">
+
+            <div class="barra-superior">
+
+                <span id="numeroSala">SALA 1 / 6</span>
+
+                <span id="nombreSala"></span>
+
+            </div>
+
+            <div class="progreso">
+                <div id="barraProgreso"></div>
+            </div>
+
+            <div class="historia">
+
+                <h2 id="tituloSala"></h2>
+
+                <p id="historiaSala"></p>
+
+            </div>
+
+
+            <div class="instruccion">
+
+                <h3>LAS TRES PUERTAS</h3>
+
+                <p>
+                    Tres caminos se abren ante ustedes.
+                    Cada uno esconde una prueba diferente.
+
+                    Elegí cuidadosamente quién atravesará cada puerta.
+                </p>
+
+            </div>
+
+
+            <div id="puertasContainer" class="puertas-container">
+
+                <!-- LAS PUERTAS SE GENERAN CON JAVASCRIPT -->
+
+            </div>
+
+
+            <div class="acciones">
+
+                <button id="confirmar" class="boton-principal" disabled>
+                    CONFIRMAR DECISIONES
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTADO DE LA SALA -->
+
+        <section id="resultado" class="pantalla">
+
+            <p class="etiqueta">CONSECUENCIAS</p>
+
+            <h2 id="tituloResultado"></h2>
+
+            <p id="textoResultado"></p>
+
+            <div id="resumenResultado" class="resumen"></div>
+
+            <button id="siguienteSala" class="boton-principal">
+                CONTINUAR
+            </button>
+
+        </section>
+
+
+        <!-- EMPATE EN EL RESENTIMIENTO -->
+
+        <section id="empate" class="pantalla">
+
+            <p class="etiqueta">EL MOMENTO DE LA VERDAD</p>
+
+            <h2>EL DESTINO NO PUEDE DECIDIR</h2>
+
+            <p>
+                El resentimiento está dividido.
+                Nadie parece tener más motivos que los demás.
+
+                Elegí quién dará el primer paso hacia la traición.
+            </p>
+
+            <div id="opcionesTraidor" class="opciones-traidor"></div>
+
+        </section>
+
+
+        <!-- FINAL -->
+
+        <section id="final" class="pantalla">
+
+            <p class="etiqueta">EL DESTINO DEL TEMPLO</p>
+
+            <h1 id="tituloFinal"></h1>
+
+            <div id="simboloFinal" class="simbolo-final"></div>
+
+            <h2 id="subtituloFinal"></h2>
+
+            <p id="historiaFinal"></p>
+
+            <div id="estadisticasFinal" class="resumen"></div>
+
+            <button id="reiniciar" class="boton-principal">
+                VOLVER A JUGAR
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>ANANSI | EL TEMPLO DE LOS TRES CAMINOS</p>
+
+        <p>Una historia donde cada decisión tiene consecuencias.</p>
+
+    </footer>
+
+
+    <script src="./js/juego.js"></script>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANANSI - El Templo de los Tres Caminos</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+        <div class="logo">ANANSI</div>
+        <div class="subtitulo">EL TEMPLO DE LOS TRES CAMINOS</div>
+    </header>
+
+    <main>
+
+        <section id="inicio" class="pantalla activa">
+
+            <div class="contenido-inicio">
+
+                <p class="etiqueta">UNA AVENTURA DE DECISIONES</p>
+
+                <h1>ANANSI</h1>
+
+                <h2>El templo de los tres caminos</h2>
+
+                <p class="descripcion-inicio">
+                    Bajo las ruinas de una antigua civilización
+                    se esconde un templo que jamás debió ser encontrado.
+
+                    Tres viajeros entraron buscando respuestas.
+                    Ninguno sabe qué tendrá que sacrificar para salir.
+                </p>
+
+                <input
+                    type="text"
+                    id="nombreJugador"
+                    placeholder="Escribí tu nombre"
+                    maxlength="20"
+                >
+
+                <button id="comenzar" class="boton-principal">
+                    COMENZAR AVENTURA
+                </button>
+
+                <button id="continuar" class="boton-secundario" hidden>
+                    CONTINUAR PARTIDA
+                </button>
+
+            </div>
+
+        </section>
+
+        <section id="personajes" class="pantalla">
+
+            <h2>LOS TRES VIAJEROS</h2>
+
+            <p class="texto-intro">
+                Cada uno posee habilidades diferentes.
+                Elegir correctamente quién atraviesa cada puerta
+                puede cambiar el destino de todos.
+            </p>
+
+            <div class="personajes-container">
+
+                <article class="personaje felix">
+
+                    <div class="simbolo">✂</div>
+
+                    <h3>FÉLIX</h3>
+
+                    <p class="elemento">LA TIJERA</p>
+
+                    <p>
+                        Creativo y carismático.
+                        Encuentra soluciones donde otros
+                        solamente ven problemas.
+                    </p>
+
+                    <span>Creatividad y persuasión</span>
+
+                </article>
+
+                <article class="personaje berto">
+
+                    <div class="simbolo">▤</div>
+
+                    <h3>BERTO</h3>
+
+                    <p class="elemento">EL PAPEL</p>
+
+                    <p>
+                        Inteligente y razonable.
+                        Analiza los detalles y encuentra
+                        respuestas mediante la lógica.
+                    </p>
+
+                    <span>Inteligencia y análisis</span>
+
+                </article>
+
+                <article class="personaje roco">
+
+                    <div class="simbolo">◆</div>
+
+                    <h3>ROCO</h3>
+
+                    <p class="elemento">LA PIEDRA</p>
+
+                    <p>
+                        Fortachón y corpulento.
+                        Su fuerza le permite superar
+                        obstáculos que parecen imposibles.
+                    </p>
+
+                    <span>Fuerza y resistencia</span>
+
+                </article>
+
+            </div>
+
+            <button id="entrarTemplo" class="boton-principal">
+                ENTRAR AL TEMPLO
+            </button>
+
+        </section>
+
+        <section id="juego" class="pantalla">
+
+            <div class="barra-superior">
+
+                <span id="numeroSala">SALA 1 / 6</span>
+
+                <span id="nombreSala"></span>
+
+            </div>
+
+            <div class="progreso">
+                <div id="barraProgreso"></div>
+            </div>
+
+            <div class="historia">
+
+                <h2 id="tituloSala"></h2>
+
+                <p id="historiaSala"></p>
+
+            </div>
+
+            <div class="instruccion">
+
+                <h3>LAS TRES PUERTAS</h3>
+
+                <p>
+                    Tres caminos se abren ante ustedes.
+                    Cada uno esconde una prueba diferente.
+
+                    Elegí cuidadosamente quién atravesará cada puerta.
+                </p>
+
+            </div>
+
+            <div id="puertasContainer" class="puertas-container"></div>
+
+            <div class="acciones">
+
+                <button id="confirmar" class="boton-principal" disabled>
+                    CONFIRMAR DECISIONES
+                </button>
+
+            </div>
+
+        </section>
+
+        <section id="resultado" class="pantalla">
+
+            <p class="etiqueta">CONSECUENCIAS</p>
+
+            <h2 id="tituloResultado"></h2>
+
+            <p id="textoResultado"></p>
+
+            <div id="resumenResultado" class="resumen"></div>
+
+            <button id="siguienteSala" class="boton-principal">
+                CONTINUAR
+            </button>
+
+        </section>
+
+        <section id="empate" class="pantalla">
+
+            <p class="etiqueta">EL MOMENTO DE LA VERDAD</p>
+
+            <h2>EL DESTINO NO PUEDE DECIDIR</h2>
+
+            <p>
+                El resentimiento está dividido.
+                Nadie parece tener más motivos que los demás.
+
+                Elegí quién dará el primer paso hacia la traición.
+            </p>
+
+            <div id="opcionesTraidor" class="opciones-traidor"></div>
+
+        </section>
+
+        <section id="final" class="pantalla">
+
+            <p class="etiqueta">EL DESTINO DEL TEMPLO</p>
+
+            <h1 id="tituloFinal"></h1>
+
+            <div id="simboloFinal" class="simbolo-final"></div>
+
+            <h2 id="subtituloFinal"></h2>
+
+            <p id="historiaFinal"></p>
+
+            <div id="estadisticasFinal" class="resumen"></div>
+
+            <button id="reiniciar" class="boton-principal">
+                VOLVER A JUGAR
+            </button>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>ANANSI | EL TEMPLO DE LOS TRES CAMINOS</p>
+
+        <p>Una historia donde cada decisión tiene consecuencias.</p>
+
+    </footer>
+
+    <script src="./js/juego.js"></script>
+
+</body>
+
+</html>
